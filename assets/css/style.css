@@ -1,30 +1,274 @@
 .container{
     display: flex;
-    flex-direction: column;
     height: calc(100vh - 50px);
     justify-content: center;
     align-items: center;
 }
 .container > div{
-    padding: 5px;
+    padding: 10px;
     border: 1px solid black;
-    margin : 10px;
+    background-color: aquamarine;
 }
-.input-box{
-    display: flex;
-    margin: 20px;
-    padding: 20px;
+
+.todo-form{
+    padding: 10px;
 }
 
 label{
-    width: 200px;
+    width: 100px;
+    margin-bottom: 10px ;
+    background-color: grey;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: center;
+    color:beige
 }
 
 input{
-    border: 1px solid green;
+    width:  200px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    display: inline-block;
+}
+
+#name-error{
+    color: red;
 }
 
 th,td{
     padding: 5px;
+    font-weight: 100;
     border: 1px dotted black;
 }
+
+button:hover{
+    background-color: aliceblue;
+}
+#clear-all{
+    background-color: rgba(210, 11, 11, 0.741);
+}
+#clear-all:hover{
+    background-color: rgb(211, 58, 84);
+}
+
+#id{
+    background-color:aquamarine;
+    color: black;
+}
+.fa-solid.fa-trash.hand{
+    color: red;
+    margin: 10px;
+}
+@keyframes mauj {
+    from{
+        transform: translate(0);
+    }
+    to{
+        transform: translate(-1000px);
+    }
+}
+@keyframes mauj2 {
+    from{
+        transform: translate(0);
+    }
+    to{
+        transform: translate(1000px);
+    }
+}
+
+#add{
+    animation: mauj 2s ease infinite;
+}
+#delete{
+    animation: mauj 2s ease 0.25s infinite;
+}
+#update{
+    animation: mauj 2s ease 0.5s infinite;
+}
+#search{
+    animation: mauj2 2s ease 0.5s infinite;
+}
+#save{
+    animation: mauj2 2s ease 0.25s infinite;
+}
+#clear-all{
+    animation: mauj2 2s ease infinite;
+}
+/*
+Global Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f3f4f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+Header
+h1 {
+    text-align: center;
+    color: #4a90e2;
+    margin-bottom: 20px;
+}
+
+Form Styles
+#todo-form {
+    margin-bottom: 30px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #555;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="url"] {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+Error Message
+#name-error {
+    color: red;
+    font-size: 12px;
+}
+
+Button Styles
+button {
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+Operations Section
+#operations {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#operations button {
+    margin: 5px;
+}
+
+Table Styles
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #4a90e2;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #f7f7f7;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table td:last-child {
+    text-align: center;
+}
+
+Records Section
+#totals p {
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+Clear All Button
+#clear-all {
+    background-color: #e74c3c;
+}
+
+#clear-all:hover {
+    background-color: #c0392b;
+}
+
+Responsive Design
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    input, textarea, button {
+        width: 100%;
+    }
+
+    #operations {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #operations button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table th, table td {
+        font-size: 14px;
+    }
+}
+*/

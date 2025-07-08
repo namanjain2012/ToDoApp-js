@@ -14,11 +14,20 @@ function initialize(){
 
 function bindEvents(){
     document.getElementById('add').addEventListener('click',addTask);
+    document.querySelector('#delete').addEventListener('click',deleteForEver);
+}
+
+function deleteForEver(){
+    const tbody = document.querySelector('#task-list');
+    tbody.innerHTML = '';
+    toDoOperations.removeTask();
+    printAllTask();
 }
 
 function showId(){
     document.querySelector('#id').innerText = autoId();
 }
+
 function addTask(){
     var task = readFields();
     if(verifyFields(task)){
@@ -30,11 +39,22 @@ function addTask(){
     // console.log("Task is : ",task);
 }
 
+function printAllTask(){
+    // todoOperations.tasks.forEach(function(task){
+    //     printTask(task);
+    // });
+     toDoOperations.tasks.forEach(printTask);
+     computeTotal();
+}
+
 function printTask(task){
-    const tbody = document.querySelector('#task-list');  //alternative for getElementById     ' # ' -> id    ' . ' -> class
+    const tbody = document.querySelector('#task-list');  /* alternative for getElementById     ' # ' -> id    ' . ' -> class */
     const tr = tbody.insertRow();
     let index = 0;
     for(let key in task){
+        if(key=='isMarked'){
+            continue;
+        }
         tr.insertCell(index).innerText = task[key];
         index++;
     }
@@ -43,18 +63,25 @@ function printTask(task){
     // total.innerText = parseInt(total.innerText)+1;
 
     const td = tr.insertCell(index);
-    td.appendChild(createIcon(task.id,toggleMarking,'fa-trash'));
+    td.appendChild(createIcon(task.id,toggleMarking));
     td.appendChild(createIcon(task.id,edit,'fa-pen'));
 }
 
 function computeTotal(){
     document.querySelector('#total').innerText = toDoOperations.getTotal();
-    document.querySelector('#unmarked').innerText = 0;
-    document.querySelector('#marked').innerText = 0;
+    document.querySelector('#unmarked').innerText = toDoOperations.unMarkCount();
+    document.querySelector('#marked').innerText = toDoOperations.markCount();
 }
 
 function toggleMarking(){
-    console.log("Toggle marking call");
+    const currentButton = this;
+    const id = currentButton.getAttribute('task-id');
+    console.log("Toggle marking call",id);
+    toDoOperations.toggleTask(id);
+    console.log('All Task',toDoOperations.tasks);
+    const tr = currentButton.parentNode.parentNode;
+    tr.classList.toggle('red');
+    computeTotal();
 }
 
 function edit(){
@@ -63,7 +90,7 @@ function edit(){
 
 function createIcon(id,fn,className='fa-trash'){              //default value for parameter
     const iTag = document.createElement("i");
-    iTag.className = `fa-solid ${className}`;
+    iTag.className = `fa-solid ${className} hand`;
     iTag.addEventListener('click',fn);
     iTag.setAttribute('task-id',id);
     return iTag;
