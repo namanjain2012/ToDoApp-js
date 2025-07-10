@@ -23,10 +23,20 @@ const toDoOperations = {
         this.tasks = this.tasks.filter(task=>!task.isMarked);
     },
     searchTask(){
-
+        
     },
-    updateTask(){
-
+    updateTask(id){
+        const taskObject = this.tasks.find(task=>task.id==id);
+        this.tasks = this.tasks.filter(task=>task.id!=id);
+        const FIELDS = ['id','name','desc','date','time','pic'];
+        for(let field of FIELDS){
+            if(field=='id'){
+                document.getElementById(field).innerText = taskObject.id;
+                continue;
+            }
+            document.getElementById(field).value = taskObject[field];
+        }
+        
     },
     sortTask(){
 

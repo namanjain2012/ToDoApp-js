@@ -46,55 +46,57 @@ th,td{
 button:hover{
     background-color: aliceblue;
 }
+
 #clear-all{
-    background-color: rgba(210, 11, 11, 0.741);
+    color: beige;
+    background-color: rgba(210, 11, 11, 0.836);
 }
 #clear-all:hover{
-    background-color: rgb(211, 58, 84);
+    background-color: rgba(255, 0, 43, 0.778);
 }
 
 #id{
     background-color:aquamarine;
     color: black;
 }
+
 .fa-solid.fa-trash.hand{
-    color: red;
+    color: rgba(255, 0, 0, 0.453);
     margin: 10px;
 }
-@keyframes mauj {
-    from{
-        transform: translate(0);
-    }
-    to{
-        transform: translate(-1000px);
-    }
-}
-@keyframes mauj2 {
-    from{
-        transform: translate(0);
-    }
-    to{
-        transform: translate(1000px);
-    }
+.fa-solid.fa-trash.hand:hover{
+    color : rgba(255, 0, 0, 0.941)
 }
 
-#add{
-    animation: mauj 2s ease infinite;
+.fa-solid.fa-pen{
+    color: rgba(0, 0, 0, 0.548);
 }
-#delete{
-    animation: mauj 2s ease 0.25s infinite;
+.fa-solid.fa-pen:hover{
+    color: black;
 }
-#update{
-    animation: mauj 2s ease 0.5s infinite;
+
+@keyframes remove {
+    from{
+        transform: translate(0);
+    }
+    to{
+        transform: translate(100px);
+        background-color: rgba(255, 0, 0, 0.863);
+        opacity: 0;
+    }
 }
-#search{
-    animation: mauj2 2s ease 0.5s infinite;
+.red{
+    background-color: rgba(238, 86, 86, 0.659);
+    color: white;
+    .fa-solid.fa-trash.hand{
+        color: rgba(0, 0, 0, 0.548);
+    }
+    .fa-solid.fa-trash.hand:hover{
+        color: black;
+    }
 }
-#save{
-    animation: mauj2 2s ease 0.25s infinite;
-}
-#clear-all{
-    animation: mauj2 2s ease infinite;
+.custom{
+    animation: remove 2s ease infinite;
 }
 /*
 Global Styles

@@ -15,6 +15,19 @@ function initialize(){
 function bindEvents(){
     document.getElementById('add').addEventListener('click',addTask);
     document.querySelector('#delete').addEventListener('click',deleteForEver);
+    document.querySelector('#clear-all').addEventListener('click',clearAll);
+}
+
+function clearAll(){
+    const tbody = document.querySelector("#task-list");
+    if(tbody.innerText!=''){
+        if(prompt("Confirm?").toLowerCase().trim()=='yes'){
+            tbody.innerHTML = '';
+            toDoOperations.tasks=[];
+            initialize();
+            printAllTask();
+        }
+    }
 }
 
 function deleteForEver(){
@@ -61,7 +74,7 @@ function printTask(task){
 
     // let total = document.getElementById('total');
     // total.innerText = parseInt(total.innerText)+1;
-
+    
     const td = tr.insertCell(index);
     td.appendChild(createIcon(task.id,toggleMarking));
     td.appendChild(createIcon(task.id,edit,'fa-pen'));
@@ -85,7 +98,13 @@ function toggleMarking(){
 }
 
 function edit(){
+    const currentButton = this;
+    const id = currentButton.getAttribute('task-id');
     console.log("edit marking call");
+    const tbody = document.querySelector("#task-list");
+    tbody.innerHTML='';
+    toDoOperations.updateTask(id);
+    printAllTask();
 }
 
 function createIcon(id,fn,className='fa-trash'){              //default value for parameter
