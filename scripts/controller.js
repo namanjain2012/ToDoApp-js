@@ -15,7 +15,12 @@ function initialize(){
 function bindEvents(){
     document.getElementById('add').addEventListener('click',addTask);
     document.querySelector('#delete').addEventListener('click',deleteForEver);
+    document.querySelector('#save').addEventListener('click',save);
     document.querySelector('#clear-all').addEventListener('click',clearAll);
+}
+
+function save(){
+    
 }
 
 function clearAll(){
@@ -48,8 +53,14 @@ function addTask(){
         printTask(task);
         computeTotal();
         showId();
+        clearInputFields();
     }
     // console.log("Task is : ",task);
+}
+
+function clearInputFields(){
+    const FIELDS = ['name','desc','date','time','pic'];
+    FIELDS.forEach(field=>document.getElementById(field).value='');
 }
 
 function printAllTask(){
@@ -58,9 +69,9 @@ function printAllTask(){
     // });
      toDoOperations.tasks.forEach(printTask);
      computeTotal();
-}
-
-function printTask(task){
+    }
+    
+    function printTask(task){
     const tbody = document.querySelector('#task-list');  /* alternative for getElementById     ' # ' -> id    ' . ' -> class */
     const tr = tbody.insertRow();
     let index = 0;

@@ -36,7 +36,6 @@ const toDoOperations = {
             }
             document.getElementById(field).value = taskObject[field];
         }
-        
     },
     sortTask(){
 
